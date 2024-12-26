@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+   <head>
+    <title>Real Time Search Filter</title>
+     <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+    body{
+        background-color: #ddd;
+
+    }
+    .container-fluid{
+        width:100%;
+        height:auto;
+        padding:0px 0px 80px 0px;
+    }
+    .container{
+        width: 1200px;
+        height:auto;
+        margin: auto;
+    }
+    .container .search{
+        display: flex;
+        padding: 30px 0px;
+        justify-content: space-between;
+    }
+    .container .search h1{
+        letter-spacing: 2px;
+        display: inline-block;
+        border-bottom: 2px solid green;
+        padding-bottom: 10px;
+    }
+    .container .search input{
+        width:60%;
+        padding: 5px 16px;/*top left*/
+        background: transparent;
+        border: 1px solid #000;
+        font-size: 20px;
+        text-transform: capitalize;/* first letter capital*/
+        letter-spacing:2px;
+        outline: none;
+    }
+    .container .search input::placeholder
+    {
+        color: green;
+        font-weight: 500;
+    }
+    .container .product-list
+    {
+        display:flex;
+        justify-content: space-between;
+        flex-wrap: wrap;/* one by one adjust space*/
+        text-align: left;
+    }
+    .container .product-list .product
+    {
+      margin-top: 30px;
+    }
+    .container .product-list .product h3
+    {
+        padding-top: 5px;
+        letter-spacing: 2px;
+        font-size:18px ;
+        font-weight: 400;
+    }
+    .container .product-list .product h4
+    {
+        padding: 3px 0px;
+        color:#48a809;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+    .container .product-list .product img{
+        width:200px;
+        height: 200px;
+    }
+
+     </style>
+   </head>
+   <body>
+      <div class="container-fluid">
+        <div class="container">
+            <div class="search">
+                <h1>All Products</h1>
+                <input type="text" name="" id="find" placeholder="search here...." onkeyup="search()">
+            </div>
+            <div class="product-list">
+                <div class="product">
+                    <img src="images/sw1k.jpg">
+                    <h3>White Color Kids Sweater</h3>
+                    <h4>$100.00 - <del>$120.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw1m.jpg">
+                    <h3>Blue Color Mens Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw1w.jpg">
+                    <h3>Blue Color Women Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw2k.jpg">
+                    <h3>Green Color Kids Sweater</h3>
+                    <h4>$300.00 - <del>$350.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw2m.jpg">
+                    <h3>Brown Color Mens Sweater</h3>
+                    <h4>$600.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw2w.jpg">
+                    <h3>Brown Color Women Sweater</h3>
+                    <h4>$550.00 - <del>$ 650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw3k.jpg">
+                    <h3>Yellow Color Kids Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw3m.jpg">
+                    <h3>Blue Color Mens Sweater</h3>
+                    <h4>$800.00 - <del>$1000.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw4k.jpg">
+                    <h3>Pink Color Kids Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw4w.jpg">
+                    <h3>White Color Women Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw5w.jpg">
+                    <h3>Pink Color Women Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+                <div class="product">
+                    <img src="images/sw5m.jpg">
+                    <h3>Cream Color mens Sweater</h3>
+                    <h4>$500.00 - <del>$650.00</del></h4>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
+    <script>
+        function search()
+        {
+            let filter = document.getElementById('find').value.toUpperCase();//search i/p value convert to uppercase
+            let item  = document.querySelectorAll('.product');//all products
+
+             let l = document.getElementsByTagName('h3');
+
+            for(var i=0;i<=l.length;i++)//all h3  names
+            {
+                let a=item[i].getElementsByTagName('h3')[0];//first h3 inside the current product
+
+                let value=a.innerHTML || a.innerText || a.textContent;//text content of the h3
+
+                if(value.toUpperCase().indexOf(filter)>-1)//value inside the h3 matches filter
+            {
+                item[i].style.display="";//if the matches product show
+            }
+            else
+            {
+                item[i].style.display="none";//doesn't match hide product
+            }
+
+            }
+
+
+        
+        }
+
+    </script>
+   </body>
+ </html>
